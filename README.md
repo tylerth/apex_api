@@ -27,6 +27,6 @@ Gets all available legend info based on equipped trackers.
 
 `/map_rotations`:
 Displays the current map rotations for Battle Royale and Arenas game modes, both ranked and unranked.
-* Field `remaining_mins` refers to how much time is left for the current map.
-* Field `duration` refers to how much time the next map will be in rotation for.
 
+`/map_rotation/<gamemode>`:
+Displays the current map rotations for a given gamemode. Options are `battle_royale`, `arenas`, `ranked`, `arenasRanked`.

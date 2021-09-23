@@ -18,11 +18,6 @@ def get_user_data(user=None,platform=None,api_key=api_key):
 
     return get_player_data(player_data)
 
-@app.route("/map_rotations")
-def get_map_rotation(api_key=api_key):
-    map_data = map_request(api_key)
-
-    return get_all_map_rotation_data(map_data)
 
 @app.route("/<platform>/<user>/legends")
 def get_legends_data(user=None,platform=None,legend=None,api_key=api_key):
@@ -30,25 +25,23 @@ def get_legends_data(user=None,platform=None,legend=None,api_key=api_key):
     
     return get_all_legends_data(player_data)
 
+
 @app.route("/<platform>/<user>/<legend>")
 def get_legend_data(user=None,platform=None,legend=None,api_key=api_key):
     player_data = player_request(user=user, platform=platform, api_key=api_key)
 
-    body = {}
+    return get_indiv_legend_data(legend, player_data)
 
-    body['legend'] = legend
-    
-    try:
-        legend_data = player_data['legends']['all'][legend]['data']
-        tracker_1_name, tracker_1_value = legend_data[0]['name'], legend_data[0]['value']
-        tracker_2_name, tracker_2_value = legend_data[1]['name'], legend_data[1]['value']
-        tracker_3_name, tracker_3_value = legend_data[2]['name'], legend_data[2]['value']
 
-        body[tracker_1_name] = tracker_1_value
-        body[tracker_2_name] = tracker_2_value
-        body[tracker_3_name] = tracker_3_value
+@app.route("/map_rotations")
+def get_map_rotations(api_key=api_key):
+    map_data = map_request(api_key)
 
-    except:
-        body['data'] = 'Missing data for {}'.format(legend)
-    
-    return body
+    return get_all_map_rotation_data(map_data)
+
+
+@app.route("/map_rotation/<gamemode>")
+def get_map_rotation(gamemode=None,api_key=api_key):
+    map_data = map_request(api_key)
+
+    return get_indiv_map_rotation(gamemode, map_data)

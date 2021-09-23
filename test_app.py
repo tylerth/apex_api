@@ -11,12 +11,19 @@ class BasicTestCase(unittest.TestCase):
         self.assertIn(b'iCATxMythos', response.data)
 
     # tests "/map_rotations"
-    def test_map_rotation(self):
+    def test_map_rotations(self):
         tester = app.test_client(self)
         response = tester.get('/map_rotations', content_type='application/json')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'arenas_unranked', response.data)
         self.assertIn(b'br_unranked', response.data)
+
+    # tests "/map_rotation/<gamemode>"
+    def test_map_rotation(self):
+        tester = app.test_client(self)
+        response = tester.get('/map_rotation/battle_royale', content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'current_map', response.data)
 
     # tests route "/<platform>/<user>/legends"
     def test_legends_info(self):
@@ -30,8 +37,7 @@ class BasicTestCase(unittest.TestCase):
         tester = app.test_client(self)
         response = tester.get('/X1/iCATxMythos/Gibraltar', content_type='application/json')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'legend', response.data)
-        self.assertIn(b'Gibraltar', response.data)
+        self.assertNotIn(b'Missing', response.data)
 
 
 if __name__ == '__main__':
