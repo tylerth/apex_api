@@ -5,10 +5,11 @@ Start the application with `flask run`.
 ## Endpoints:
 
 `/<platform>/<username>`:
-Gets player level and rank information, including rank tier and current Ranked Points.
+Gets player level and rank information, including rank tier and current Ranked Points. Valid platforms are X1, PS, PC.
 
 `/<platform>/<username>/<legend>`:
 Gets available individual legend info based on equipped trackers. 
+
 Ex: `GET /X1/iCATxMythos/Bloodhound`
 ```
 {
