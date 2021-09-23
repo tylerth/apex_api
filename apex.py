@@ -26,8 +26,6 @@ def get_player_data(player_data):
     username = player_data['global']['name']
     platform = player_data['global']['platform']
     level = player_data['global']['level']
-    # br_ranked = get_br_rank_data(player_data)
-    # arenas_ranked = get_arenas_rank_data(player_data)
     br_ranked = get_ranked_data('rank', player_data)
     arenas_ranked = get_ranked_data('arena', player_data)
 
@@ -112,7 +110,9 @@ def get_indiv_map_rotation(gamemode, map_data):
             'current': {'current_map': curr_map},
             'next': {'next_map': next_map}
         }
-    else:      
+    else:
+
+        # these fields are missing from 'ranked', so they are put in this else statement
         rem_mins = map_data[gamemode]['current']['remainingMins']
         next_map_dur = map_data[gamemode]['next']['DurationInMinutes']
 
@@ -128,10 +128,6 @@ def get_indiv_map_rotation(gamemode, map_data):
 def get_all_map_rotation_data(map_data):
 
     maps = {}
-    # maps['br_unranked'] = get_br_map_rotation(map_data)
-    # maps['arenas_unranked'] = get_arenas_map_rotation(map_data)
-    # maps['arenas_ranked'] = get_arenas_ranked_map_rotation(map_data)
-    # maps['br_ranked'] = get_br_ranked_map_rotation(map_data)
 
     maps['br_unranked'] = get_indiv_map_rotation('battle_royale', map_data)
     maps['arenas_unranked'] = get_indiv_map_rotation('arenas', map_data)
