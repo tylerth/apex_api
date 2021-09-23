@@ -10,7 +10,7 @@ app.debug = True
 
 @app.route("/")
 def hello_world():
-    return "<p>Usage:</p><p></p>"
+    return "<p><a href=\"https://github.com/tylerth/apex_api/blob/dev/README.md\">Click here</a> to view available endpoints and usage documentation.</p>"
 
 @app.route("/<platform>/<user>")
 def get_user_data(user=None,platform=None,api_key=api_key):
