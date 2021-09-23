@@ -15,9 +15,9 @@ Ex: `GET /X1/iCATxMythos/Bloodhound`
 {
     'Bloodhound':
     {
-        'Damage':	328272,
-        'Enemies scanned':	7942,
-        'Kills':	1110
+        'Damage': 328272,
+        'Enemies scanned': 7942,
+        'Kills': 1110
     }
 }
 ```
