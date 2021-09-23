@@ -9,7 +9,7 @@ Gets player level and rank information, including rank tier and current Ranked P
 
 `/<platform>/<username>/<legend>`:
 Gets available individual legend info based on equipped trackers. 
-Ex: GET /X1/iCATxMythos/Bloodhound
+Ex: `GET /X1/iCATxMythos/Bloodhound`
     {
         'Bloodhound':
         {
@@ -24,8 +24,6 @@ Gets all available legend info based on equipped trackers.
 
 `/map_rotations`:
 Displays the current map rotations for Battle Royale and Arenas game modes, both ranked and unranked.
-
-Field `remaining_mins` refers to how much time is left for the current map.
-
-Field `duration` refers to how much time the next map will be in rotation for.
+* Field `remaining_mins` refers to how much time is left for the current map.
+* Field `duration` refers to how much time the next map will be in rotation for.
 
